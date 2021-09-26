@@ -1,0 +1,27 @@
+<main>
+  <div class="d-flex align-items-center">
+    <div class="flex-grow-1">
+       <h1 class="page-title">Kartvizitler</h1>
+  <p class="page-description">Bu ekrandan kartvizitlerinizi yönetebilisiniz.</p>
+    </div>
+    <button mat-flat-button color="primary" (click)="openAddCardModal()">Yeni Kartvizit</button>
+  </div>
+
+
+  <hr />
+
+  <div class="row">
+    
+    <div class="col-120" *ngIf="!cardService.cards">
+      <span> Kartvizitler yükleniyor.</span>
+    </div>
+
+    <div class="col-120" *ngIf="cardService.cards?.length===0">
+      <span>Henüz kartvizit eklemediniz. <a class="text-primary" (click)="openAddCardModal()">Buraya tıklayarak</a> ilk kartvizitinizi ekleyebilirsiniz.</span>
+    </div>
+
+    <div class="col-sm-3" *ngFor="let card of cardService.cards">
+      <app-card-item [card]="card"></app-card-item>
+    </div>
+  </div>
+</main>

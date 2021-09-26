@@ -1,0 +1,25 @@
+  <div class="card">
+    <div class="card-body">
+      <mat-card class="card-item">
+<mat-card-header (click)="openUpdateCardModal(card)">                  
+    <mat-card-title>{{card.name}}</mat-card-title>
+    <mat-card-subtitle>{{card.title}}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">{{card.phone}}</li>
+          <li class="list-group-item" *ngIf="card.email; else noEmail">{{card.email}}</li>
+          <ng-template #noEmail>
+            <small class="text-warning no-content">E-Posta adresi girilmemiş.</small>
+          </ng-template>
+          <li class="list-group-item" *ngIf="card.address; else noAddress">{{card.address}}</li>
+          <ng-template #noAddress>
+            <small class="text-warning no-content">Adresi girilmemiş.</small>
+          </ng-template>
+        </ul>
+  </mat-card-content>
+</mat-card>
+
+    </div>
+  </div>
